@@ -2,6 +2,22 @@
 Using Recyclerview with the new Android Data Binding framework
 
 
+```java
+@Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        usersViewModel = new UsersViewModel();
+        usersViewModel.users.add(new SuperUserViewModel(new User("Android", "Dev")));
+
+        binding = DataBindingUtil.setContentView(this, R.layout.users_view);
+        binding.setUsersViewModel(usersViewModel);
+        binding.setView(this);
+        binding.activityUsersRecycler.setLayoutManager(new LinearLayoutManager(this));
+    }
+```
+
+
 ```xml
 <!-- layout.xml -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
