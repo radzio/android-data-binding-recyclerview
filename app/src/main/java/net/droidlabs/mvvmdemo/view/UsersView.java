@@ -56,7 +56,7 @@ public class UsersView extends AppCompatActivity
         };
     }
 
-    public ItemBinder<UserViewModel> getItemViewBinder()
+    public ItemBinder<UserViewModel> itemViewBinder()
     {
         return new CompositeItemBinder<UserViewModel>(
                 new SuperUserBinder(com.android.databinding.library.baseAdapters.BR.user, R.layout.item_super_user),
