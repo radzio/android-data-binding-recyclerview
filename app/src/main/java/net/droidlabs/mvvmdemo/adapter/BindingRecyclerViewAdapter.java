@@ -15,7 +15,7 @@ import java.util.Collection;
 
 public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder>
 {
-    private final WeakReferenceOnListChangedListener listener;
+    private final WeakReferenceOnListChangedCallback onListChangedCallback;
     private final ItemBinder<T> itemBinder;
     private ObservableList<T> items;
     private LayoutInflater inflater;
@@ -23,7 +23,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     public BindingRecyclerViewAdapter(ItemBinder<T> itemBinder, @Nullable Collection<T> items)
     {
         this.itemBinder = itemBinder;
-        this.listener = new WeakReferenceOnListChangedListener<>(this);
+        this.onListChangedCallback = new WeakReferenceOnListChangedCallback<>(this);
         setItems(items);
     }
 
@@ -41,7 +41,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
 
         if (this.items != null)
         {
-            this.items.removeOnListChangedCallback(listener);
+            this.items.removeOnListChangedCallback(onListChangedCallback);
             notifyItemRangeRemoved(0, this.items.size());
         }
 
@@ -49,12 +49,12 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
         {
             this.items = (ObservableList<T>) items;
             notifyItemRangeInserted(0, this.items.size());
-            this.items.addOnListChangedCallback(listener);
+            this.items.addOnListChangedCallback(onListChangedCallback);
         }
         else if (items != null)
         {
             this.items = new ObservableArrayList<>();
-            this.items.addOnListChangedCallback(listener);
+            this.items.addOnListChangedCallback(onListChangedCallback);
             this.items.addAll(items);
         }
         else
@@ -68,7 +68,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     {
         if (items != null)
         {
-            items.removeOnListChangedCallback(listener);
+            items.removeOnListChangedCallback(onListChangedCallback);
         }
     }
 
@@ -115,12 +115,12 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
         }
     }
 
-    private static class WeakReferenceOnListChangedListener<T> extends ObservableList.OnListChangedCallback
+    private static class WeakReferenceOnListChangedCallback<T> extends ObservableList.OnListChangedCallback
     {
 
         private final WeakReference<BindingRecyclerViewAdapter<T>> adapterReference;
 
-        public WeakReferenceOnListChangedListener(BindingRecyclerViewAdapter<T> bindingRecyclerViewAdapter)
+        public WeakReferenceOnListChangedCallback(BindingRecyclerViewAdapter<T> bindingRecyclerViewAdapter)
         {
             this.adapterReference = new WeakReference<>(bindingRecyclerViewAdapter);
         }
