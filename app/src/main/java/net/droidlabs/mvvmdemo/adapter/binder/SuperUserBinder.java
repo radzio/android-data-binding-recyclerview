@@ -1,6 +1,5 @@
 package net.droidlabs.mvvmdemo.adapter.binder;
 
-import net.droidlabs.mvvmdemo.view.ConditionalDataBinder;
 import net.droidlabs.mvvmdemo.viewmodel.SuperUserViewModel;
 import net.droidlabs.mvvmdemo.viewmodel.UserViewModel;
 

@@ -1,8 +1,5 @@
 package net.droidlabs.mvvmdemo.adapter.binder;
 
-import net.droidlabs.mvvmdemo.adapter.binder.ItemBinder;
-import net.droidlabs.mvvmdemo.view.ConditionalDataBinder;
-
 public class CompositeItemBinder<T> implements ItemBinder<T>
 {
     private final ConditionalDataBinder<T>[] conditionalDataBinders;

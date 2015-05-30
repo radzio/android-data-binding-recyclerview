@@ -1,6 +1,4 @@
-package net.droidlabs.mvvmdemo.view;
-
-import net.droidlabs.mvvmdemo.adapter.binder.ItemBinderBase;
+package net.droidlabs.mvvmdemo.adapter.binder;
 
 public abstract class ConditionalDataBinder<T> extends ItemBinderBase<T>
 {
