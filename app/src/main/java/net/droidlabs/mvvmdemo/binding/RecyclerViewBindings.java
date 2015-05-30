@@ -28,8 +28,8 @@ public class RecyclerViewBindings
 
 
     @SuppressWarnings("unchecked")
-    @BindingAdapter("itemView")
-    public static <T> void setItemView(RecyclerView recyclerView, ItemBinder<T> itemViewMapper)
+    @BindingAdapter("itemViewBinder")
+    public static <T> void setItemViewBinder(RecyclerView recyclerView, ItemBinder<T> itemViewMapper)
     {
         Collection<T> items = (Collection<T>) recyclerView.getTag(KEY);
         recyclerView.setAdapter(new BindingRecyclerViewAdapter<>(itemViewMapper, items));
