@@ -1,6 +1,7 @@
 # android-data-binding-recyclerview
 Using Recyclerview with the new Android Data Binding framework.
 
+![demo](https://cloud.githubusercontent.com/assets/469111/7898771/36df1504-070b-11e5-95d5-d8ca0aaf50dd.gif)
 
 
 ## How to start?
