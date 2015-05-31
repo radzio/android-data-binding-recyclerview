@@ -13,7 +13,7 @@ Just clone this repository and start playing with it! If you want to use some pa
 
 - In your main  build.gradle add:
  
-```
+```gradle
 classpath 'com.android.tools.build:gradle:1.3.0-beta1'
 classpath "com.android.databinding:dataBinder:1.0-rc0"
 ```
@@ -21,7 +21,7 @@ classpath "com.android.databinding:dataBinder:1.0-rc0"
 - In your app build.gradle add:
     
     
-```
+```gradle
 apply plugin: 'com.android.databinding'
 ```
 
