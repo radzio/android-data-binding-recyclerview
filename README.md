@@ -75,7 +75,6 @@ Remember to use your classes and packages ;-).
 ```java
     public class UsersViewModel extends BaseObservable
     {
-        @Bindable
         public ObservableArrayList<UserViewModel> users;
 
         public ItemBinder<UserViewModel> itemViewBinder()
