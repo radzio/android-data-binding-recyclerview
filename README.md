@@ -70,6 +70,21 @@ Remember to use your classes and packages ;-).
     }
 ```
 
+### Modify your ViewModel class
+
+```java
+    public class UsersViewModel extends BaseObservable
+    {
+        @Bindable
+        public ObservableArrayList<UserViewModel> users;
+
+        public ItemBinder<UserViewModel> itemViewBinder()
+            {
+                return new ItemBinderBase<UserViewModel>(BR.user, R.layout.item_user);
+            }
+    }
+```
+
 ### Some details
 
 Your ViewModel (__UsersViewModel__  in my example) should have field of __ObservableArrayList<YourClass>__ type which will be bind to  recycler view. 
