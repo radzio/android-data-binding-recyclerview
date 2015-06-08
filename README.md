@@ -1,4 +1,4 @@
-# android-data-binding-recyclerview
+# Android Data Binding + RecyclerView
 Using Recyclerview with the new Android Data Binding framework.
 
 ![demo](https://cloud.githubusercontent.com/assets/469111/7898771/36df1504-070b-11e5-95d5-d8ca0aaf50dd.gif)
@@ -12,19 +12,18 @@ Just clone this repository and start playing with it! If you want to use some pa
 ### Change your gradle file
 
 - In your main  build.gradle add:
-    
-   
-	classpath 'com.android.tools.build:gradle:1.3.0-beta1'
-    classpath "com.android.databinding:dataBinder:1.0-rc0"
-
-
+ 
+```gradle
+classpath 'com.android.tools.build:gradle:1.3.0-beta1'
+classpath "com.android.databinding:dataBinder:1.0-rc0"
+```
 
 - In your app build.gradle add:
     
     
-
-    apply plugin: 'com.android.databinding'
-
+```gradle
+apply plugin: 'com.android.databinding'
+```
 
 
 
@@ -75,7 +74,6 @@ Remember to use your classes and packages ;-).
 ```java
     public class UsersViewModel extends BaseObservable
     {
-        @Bindable
         public ObservableArrayList<UserViewModel> users;
 
         public ItemBinder<UserViewModel> itemViewBinder()
