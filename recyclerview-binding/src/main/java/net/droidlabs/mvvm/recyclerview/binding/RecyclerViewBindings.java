@@ -1,9 +1,9 @@
-package net.droidlabs.mvvmdemo.binding;
+package net.droidlabs.mvvm.recyclerview.binding;
 
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;
-import net.droidlabs.mvvmdemo.adapter.BindingRecyclerViewAdapter;
-import net.droidlabs.mvvmdemo.adapter.binder.ItemBinder;
+import net.droidlabs.mvvm.recyclerview.adapter.BindingRecyclerViewAdapter;
+import net.droidlabs.mvvm.recyclerview.adapter.binder.ItemBinder;
 
 import java.util.Collection;
 

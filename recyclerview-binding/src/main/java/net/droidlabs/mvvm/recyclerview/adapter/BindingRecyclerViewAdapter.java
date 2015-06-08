@@ -1,4 +1,4 @@
-package net.droidlabs.mvvmdemo.adapter;
+package net.droidlabs.mvvm.recyclerview.adapter;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableArrayList;
@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import net.droidlabs.mvvmdemo.adapter.binder.ItemBinder;
+import net.droidlabs.mvvm.recyclerview.adapter.binder.ItemBinder;
 
 import java.lang.ref.WeakReference;
 import java.util.Collection;

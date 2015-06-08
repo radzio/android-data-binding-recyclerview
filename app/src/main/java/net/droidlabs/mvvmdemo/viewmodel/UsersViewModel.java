@@ -19,4 +19,5 @@ public class UsersViewModel extends BaseObservable
     {
         this.users.add(new UserViewModel(new User(name, surname)));
     }
+
 }

@@ -8,11 +8,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
+import net.droidlabs.mvvm.recyclerview.adapter.binder.CompositeItemBinder;
+import net.droidlabs.mvvm.recyclerview.adapter.binder.ItemBinder;
+import net.droidlabs.mvvmdemo.BR;
 import net.droidlabs.mvvmdemo.R;
-import net.droidlabs.mvvmdemo.adapter.binder.CompositeItemBinder;
-import net.droidlabs.mvvmdemo.adapter.binder.ItemBinder;
-import net.droidlabs.mvvmdemo.adapter.binder.SuperUserBinder;
-import net.droidlabs.mvvmdemo.adapter.binder.UserBinder;
+import net.droidlabs.mvvmdemo.binder.SuperUserBinder;
+import net.droidlabs.mvvmdemo.binder.UserBinder;
 import net.droidlabs.mvvmdemo.databinding.UsersViewBinding;
 import net.droidlabs.mvvmdemo.model.User;
 import net.droidlabs.mvvmdemo.viewmodel.SuperUserViewModel;
@@ -46,6 +47,14 @@ public class UsersView extends AppCompatActivity
 
     public View.OnClickListener onButtonClick()
     {
+        binding.activityUsersRecycler.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                // do some magic
+            }
+        });
         return new View.OnClickListener()
         {
             @Override
@@ -59,8 +68,8 @@ public class UsersView extends AppCompatActivity
     public ItemBinder<UserViewModel> itemViewBinder()
     {
         return new CompositeItemBinder<UserViewModel>(
-                new SuperUserBinder(com.android.databinding.library.baseAdapters.BR.user, R.layout.item_super_user),
-                new UserBinder(com.android.databinding.library.baseAdapters.BR.user, R.layout.item_user)
+                new SuperUserBinder(BR.user, R.layout.item_super_user),
+                new UserBinder(BR.user, R.layout.item_user)
         );
     }
 }

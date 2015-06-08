@@ -1,4 +1,4 @@
-package net.droidlabs.mvvmdemo.adapter.binder;
+package net.droidlabs.mvvm.recyclerview.adapter.binder;
 
 public interface ItemBinder<T>
 {
