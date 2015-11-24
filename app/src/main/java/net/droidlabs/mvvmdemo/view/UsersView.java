@@ -49,14 +49,6 @@ public class UsersView extends AppCompatActivity
 
     public View.OnClickListener onButtonClick()
     {
-        binding.activityUsersRecycler.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                // do some magic
-            }
-        });
         return new View.OnClickListener()
         {
             @Override
