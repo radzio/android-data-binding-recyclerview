@@ -1,13 +1,12 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.android.databinding'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 23
+    buildToolsVersion '23.0.2'
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -20,6 +19,10 @@ android {
 
     lintOptions {
         abortOnError false
+    }
+
+    dataBinding {
+        enabled = true
     }
 
 }
