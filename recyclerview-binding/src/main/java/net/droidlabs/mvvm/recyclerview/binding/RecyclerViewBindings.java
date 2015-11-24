@@ -4,12 +4,14 @@ import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;
 import net.droidlabs.mvvm.recyclerview.adapter.BindingRecyclerViewAdapter;
 import net.droidlabs.mvvm.recyclerview.adapter.binder.ItemBinder;
+import net.droidlabs.mvvm.recyclerview.adapter.ClickHandler;
 
 import java.util.Collection;
 
 public class RecyclerViewBindings
 {
-    private static final int KEY = -123;
+    private static final int KEY_ITEMS = -123;
+    private static final int KEY_HANDLER = -124;
 
     @SuppressWarnings("unchecked")
     @BindingAdapter("items")
@@ -22,16 +24,36 @@ public class RecyclerViewBindings
         }
         else
         {
-            recyclerView.setTag(KEY, items);
+            recyclerView.setTag(KEY_ITEMS, items);
         }
     }
 
+    @SuppressWarnings("unchecked")
+    @BindingAdapter("clickHandler")
+    public static <T> void setHandler(RecyclerView recyclerView, ClickHandler<T> handler)
+    {
+        BindingRecyclerViewAdapter<T> adapter = (BindingRecyclerViewAdapter<T>) recyclerView.getAdapter();
+        if (adapter != null)
+        {
+            adapter.setClickHandler(handler);
+        }
+        else
+        {
+            recyclerView.setTag(KEY_HANDLER, handler);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     @BindingAdapter("itemViewBinder")
     public static <T> void setItemViewBinder(RecyclerView recyclerView, ItemBinder<T> itemViewMapper)
     {
-        Collection<T> items = (Collection<T>) recyclerView.getTag(KEY);
-        recyclerView.setAdapter(new BindingRecyclerViewAdapter<>(itemViewMapper, items));
+        Collection<T> items = (Collection<T>) recyclerView.getTag(KEY_ITEMS);
+        ClickHandler<T> clickHandler = (ClickHandler<T>) recyclerView.getTag(KEY_HANDLER);
+        BindingRecyclerViewAdapter<T> adapter = new BindingRecyclerViewAdapter<>(itemViewMapper, items);
+        if(clickHandler != null)
+        {
+            adapter.setClickHandler(clickHandler);
+        }
+        recyclerView.setAdapter(adapter);
     }
 }

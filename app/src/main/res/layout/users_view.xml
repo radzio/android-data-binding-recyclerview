@@ -26,6 +26,7 @@
             android:layout_weight="1"
             app:items="@{usersViewModel.users}"
             app:itemViewBinder="@{view.itemViewBinder}"
+            app:clickHandler="@{view.clickHandler}"
             />
 
         <LinearLayout
