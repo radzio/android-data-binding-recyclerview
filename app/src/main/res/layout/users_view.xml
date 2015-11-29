@@ -27,6 +27,7 @@
             app:items="@{usersViewModel.users}"
             app:itemViewBinder="@{view.itemViewBinder}"
             app:clickHandler="@{view.clickHandler}"
+            app:longClickHandler="@{view.longClickHandler}"
             />
 
         <LinearLayout

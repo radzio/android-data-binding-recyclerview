@@ -14,7 +14,7 @@ import net.droidlabs.mvvm.recyclerview.adapter.binder.ItemBinder;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 
-public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener
+public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingRecyclerViewAdapter.ViewHolder> implements View.OnClickListener, View.OnLongClickListener
 {
     private static final int ITEM_MODEL = -124;
     private final WeakReferenceOnListChangedCallback onListChangedCallback;
@@ -22,6 +22,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     private ObservableList<T> items;
     private LayoutInflater inflater;
     private ClickHandler<T> clickHandler;
+    private LongClickHandler<T> longClickHandler;
 
     public BindingRecyclerViewAdapter(ItemBinder<T> itemBinder, @Nullable Collection<T> items)
     {
@@ -94,6 +95,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
         viewHolder.binding.setVariable(itemBinder.getBindingVariable(item), item);
         viewHolder.binding.getRoot().setTag(ITEM_MODEL, item);
         viewHolder.binding.getRoot().setOnClickListener(this);
+        viewHolder.binding.getRoot().setOnLongClickListener(this);
         viewHolder.binding.executePendingBindings();
     }
 
@@ -117,6 +119,18 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
             T item = (T) v.getTag(ITEM_MODEL);
             clickHandler.onClick(item);
         }
+    }
+
+    @Override
+    public boolean onLongClick(View v)
+    {
+        if (clickHandler != null)
+        {
+            T item = (T) v.getTag(ITEM_MODEL);
+            longClickHandler.onLongClick(item);
+            return true;
+        }
+        return false;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder
@@ -194,5 +208,10 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     public void setClickHandler(ClickHandler<T> clickHandler)
     {
         this.clickHandler = clickHandler;
+    }
+
+    public void setLongClickHandler(LongClickHandler<T> clickHandler)
+    {
+        this.longClickHandler = clickHandler;
     }
 }

@@ -5,13 +5,15 @@ import android.support.v7.widget.RecyclerView;
 import net.droidlabs.mvvm.recyclerview.adapter.BindingRecyclerViewAdapter;
 import net.droidlabs.mvvm.recyclerview.adapter.binder.ItemBinder;
 import net.droidlabs.mvvm.recyclerview.adapter.ClickHandler;
+import net.droidlabs.mvvm.recyclerview.adapter.LongClickHandler;
 
 import java.util.Collection;
 
 public class RecyclerViewBindings
 {
     private static final int KEY_ITEMS = -123;
-    private static final int KEY_HANDLER = -124;
+    private static final int KEY_CLICK_HANDLER = -124;
+    private static final int KEY_LONG_CLICK_HANDLER = -125;
 
     @SuppressWarnings("unchecked")
     @BindingAdapter("items")
@@ -39,7 +41,22 @@ public class RecyclerViewBindings
         }
         else
         {
-            recyclerView.setTag(KEY_HANDLER, handler);
+            recyclerView.setTag(KEY_CLICK_HANDLER, handler);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    @BindingAdapter("longClickHandler")
+    public static <T> void setHandler(RecyclerView recyclerView, LongClickHandler<T> handler)
+    {
+        BindingRecyclerViewAdapter<T> adapter = (BindingRecyclerViewAdapter<T>) recyclerView.getAdapter();
+        if (adapter != null)
+        {
+            adapter.setLongClickHandler(handler);
+        }
+        else
+        {
+            recyclerView.setTag(KEY_LONG_CLICK_HANDLER, handler);
         }
     }
 
@@ -48,7 +65,7 @@ public class RecyclerViewBindings
     public static <T> void setItemViewBinder(RecyclerView recyclerView, ItemBinder<T> itemViewMapper)
     {
         Collection<T> items = (Collection<T>) recyclerView.getTag(KEY_ITEMS);
-        ClickHandler<T> clickHandler = (ClickHandler<T>) recyclerView.getTag(KEY_HANDLER);
+        ClickHandler<T> clickHandler = (ClickHandler<T>) recyclerView.getTag(KEY_CLICK_HANDLER);
         BindingRecyclerViewAdapter<T> adapter = new BindingRecyclerViewAdapter<>(itemViewMapper, items);
         if(clickHandler != null)
         {

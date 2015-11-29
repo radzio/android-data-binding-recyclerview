@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import net.droidlabs.mvvm.recyclerview.adapter.ClickHandler;
+import net.droidlabs.mvvm.recyclerview.adapter.LongClickHandler;
 import net.droidlabs.mvvm.recyclerview.adapter.binder.CompositeItemBinder;
 import net.droidlabs.mvvm.recyclerview.adapter.binder.ItemBinder;
 import net.droidlabs.mvvmdemo.BR;
@@ -66,7 +67,19 @@ public class UsersView extends AppCompatActivity
             @Override
             public void onClick(UserViewModel user)
             {
-                Toast.makeText(UsersView.this, user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(UsersView.this, user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_SHORT).show();
+            }
+        };
+    }
+
+    public LongClickHandler<UserViewModel> longClickHandler()
+    {
+        return new LongClickHandler<UserViewModel>()
+        {
+            @Override
+            public void onLongClick(UserViewModel user)
+            {
+                Toast.makeText(UsersView.this, "LONG CLICK: " + user.getFirstName() + " " + user.getLastName(), Toast.LENGTH_SHORT).show();
             }
         };
     }
