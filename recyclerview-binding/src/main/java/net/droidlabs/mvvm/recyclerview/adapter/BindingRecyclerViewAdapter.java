@@ -124,7 +124,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<BindingR
     @Override
     public boolean onLongClick(View v)
     {
-        if (clickHandler != null)
+        if (longClickHandler != null)
         {
             T item = (T) v.getTag(ITEM_MODEL);
             longClickHandler.onLongClick(item);
