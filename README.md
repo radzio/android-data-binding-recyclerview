@@ -88,7 +88,7 @@ Remember to use your classes and packages ;-).
 
 Your ViewModel (__UsersViewModel__  in my example) should have field of __ObservableArrayList<YourClass>__ type which will be bind to  recycler view. 
 
-Next thing is __ItemViewBinder__. This class is used in  __BindingRecyclerViewAdapter__ for creating VieHolders and it's item views bindings. In my example I've created __CompositeItemBinder__ in order to support two different item types with separate layouts. If you want to display list with one data type you can use ItemBinderBase:
+Next thing is __ItemViewBinder__. This class is used in  __BindingRecyclerViewAdapter__ for creating ViewHolders and it's item views bindings. In my example I've created __CompositeItemBinder__ in order to support two different item types with separate layouts. If you want to display list with one data type you can use ItemBinderBase:
 
 ```java
 	public ItemBinder<YourClass> itemViewBinder()
