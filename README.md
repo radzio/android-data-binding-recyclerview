@@ -14,7 +14,7 @@ Just clone this repository and start playing with it! If you want to use some pa
 - In your main  build.gradle add:
  
 ```gradle
-classpath 'com.android.tools.build:gradle:1.5.0'
+compile 'com.github.radzio:android-data-binding-recyclerview:0.1.0'
 ```
 
 - In your app build.gradle add:
