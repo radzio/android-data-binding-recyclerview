@@ -1,16 +1,15 @@
 package net.droidlabs.mvvm.recyclerview.adapter.binder;
 
-public abstract class ConditionalDataBinder<T> extends ItemBinderBase<T>
-{
-    public ConditionalDataBinder(int bindingVariable, int layoutId)
-    {
-        super(bindingVariable, layoutId);
+import java.util.Map;
+
+public abstract class ConditionalDataBinder<T> extends ItemBinderBase<T> {
+    public ConditionalDataBinder(int bindingVariable, int layoutId, Map<Integer, Object> bindings) {
+        super(bindingVariable, layoutId, bindings);
     }
 
     public abstract boolean canHandle(T model);
 
-    public  boolean canHandle(int layoutId)
-    {
+    public boolean canHandle(int layoutId) {
         return this.layoutId == layoutId;
     }
 }
