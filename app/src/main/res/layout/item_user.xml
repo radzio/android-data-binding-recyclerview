@@ -7,6 +7,11 @@
         <variable
             name="user"
             type="net.droidlabs.mvvmdemo.viewmodel.UserViewModel"/>
+
+
+        <variable
+            name="group"
+            type="net.droidlabs.mvvmdemo.model.Group" />
     </data>
 
     <LinearLayout
@@ -16,6 +21,12 @@
         android:layout_height="match_parent"
         android:background="#CCC"
         android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{group.name}" />
 
         <TextView
             android:layout_width="0dp"
