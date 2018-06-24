@@ -1,53 +1,53 @@
 apply plugin: 'com.android.application'
 
 repositories {
-    jcenter()
-    mavenCentral()
-    google()
-//    for snapshots only
-//    maven {
-//        url "https://oss.sonatype.org/content/repositories/snapshots"
-//    }
-    google()
+  jcenter()
+  mavenCentral()
+  google()
+  //    for snapshots only
+  //    maven {
+  //        url "https://oss.sonatype.org/content/repositories/snapshots"
+  //    }
+  google()
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+  compileSdkVersion 28
+  buildToolsVersion '28.0.0 rc1'
 
-    defaultConfig {
-        applicationId "net.droidlabs.mvvmdemo"
-        minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+  defaultConfig {
+    applicationId "net.droidlabs.mvvmdemo"
+    minSdkVersion 19
+    targetSdkVersion 26
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
 
-    lintOptions {
-        abortOnError false
-    }
+  lintOptions {
+    abortOnError false
+  }
 
-    dataBinding {
-        enabled = true
-    }
+  dataBinding {
+    enabled = true
+  }
 
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
-    implementation 'com.android.support:support-annotations:26.1.0'
-    //compile 'net.droidlabs.mvvm:recyclerview:0.0.2'
-    //compile 'com.github.radzio:android-data-binding-recyclerview:0.0.3'
-    implementation project(":recyclerview-binding")
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
+  implementation 'androidx.recyclerview:recyclerview:1.0.0-alpha3'
+  implementation 'androidx.annotation:annotation:1.0.0-alpha3'
+  //compile 'net.droidlabs.mvvm:recyclerview:0.0.2'
+  //compile 'com.github.radzio:android-data-binding-recyclerview:0.0.3'
+  implementation project(":recyclerview-binding")
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:1.10.19'
+  testImplementation 'junit:junit:4.12'
+  testImplementation 'org.mockito:mockito-core:1.10.19'
 }

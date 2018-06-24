@@ -1,61 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+  >
 
-    <data>
+  <data>
 
-        <variable
-            name="usersViewModel"
-            type="net.droidlabs.mvvmdemo.viewmodel.UsersViewModel"/>
+    <variable
+      name="usersViewModel"
+      type="net.droidlabs.mvvmdemo.viewmodel.UsersViewModel"
+      />
 
-        <variable
-            name="view"
-            type="net.droidlabs.mvvmdemo.view.UsersView"/>
-    </data>
+    <variable
+      name="view"
+      type="net.droidlabs.mvvmdemo.view.UsersView"
+      />
+  </data>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/activity_users_recycler"
+      android:scrollbars="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      app:items="@{usersViewModel.users}"
+      app:itemViewBinder="@{view.itemViewBinder}"
+      app:clickHandler="@{view.clickHandler}"
+      app:longClickHandler="@{view.longClickHandler}"
+      />
 
     <LinearLayout
-        android:layout_width="match_parent"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:orientation="horizontal"
+      >
+
+      <EditText
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_weight="1"
+        android:id="@+id/users_view_firstname"
+        />
+      />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/activity_users_recycler"
-            android:scrollbars="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:items="@{usersViewModel.users}"
-            app:itemViewBinder="@{view.itemViewBinder}"
-            app:clickHandler="@{view.clickHandler}"
-            app:longClickHandler="@{view.longClickHandler}"
-            />
+      <EditText
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/users_view_lastname"
+        />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/users_view_firstname"/>
-                />
-
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/users_view_lastname"/>
-
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Add"
-                android:clickable="true"
-                app:onClickListener="@{view.onButtonClick}"/>
-        </LinearLayout>
+      <Button
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Add"
+        android:clickable="true"
+        app:onClickListener="@{view.onButtonClick}"
+        />
     </LinearLayout>
+  </LinearLayout>
 </layout>
